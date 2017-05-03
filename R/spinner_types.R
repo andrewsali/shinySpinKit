@@ -6,45 +6,23 @@
 #' @param type The type of spinner to add. You can see the available types of spinners in the package variables .spinner_types
 #' @param color The color of the spinner to be applied in HTML
 #' @export
-create_spinner <- function(type=.spinner_types[1],color="#333333") {
+create_spinner <- function(type=.spinner_types[1],color=getOption("spinner.color")) {
   # depending on the spinner types, one needs to generate different inner divs
   output_divs <- NULL
   
+  # each spinner will have a unique id, to allow seperate coloring
   id <- paste0("spinner-",shiny:::createUniqueId(4))
   
-  colour_css <- shiny::tagList()
+  # color styling is based on: https://github.com/Urigo/angular-spinkit/issues/10
+  color_css <- shiny::tagList()
   
   if (type=="rotating-plane") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-            ".sk-rotating-plane {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-rotating-plane",id)
     output_divs <- shiny::div(id=id,class="sk-rotating-plane")
   }
   
   if (type=="double-bounce") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-              ".sk-double-bounce > .sk-child {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-double-bounce > .sk-child",id)
     output_divs <- shiny::div(
       id=id,
       class="sk-double-bounce",
@@ -53,19 +31,7 @@ create_spinner <- function(type=.spinner_types[1],color="#333333") {
   }
   
   if (type=="wave") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-              ".sk-wave > .sk-rect {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-wave > .sk-rect",id)
     output_divs <- shiny::div(
       id=id,
       class="sk-wave",
@@ -74,19 +40,7 @@ create_spinner <- function(type=.spinner_types[1],color="#333333") {
   }
   
   if (type=="wandering-cubes") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-              ".sk-wandering-cubes > .sk-cube {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-wandering-cubes > .sk-cube",id)
     output_divs <- shiny::div(
       id=id,
       class="sk-wandering-cubes",
@@ -95,36 +49,12 @@ create_spinner <- function(type=.spinner_types[1],color="#333333") {
   }
   
   if (type=="pulse") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-              ".sk-spinner-pulse {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-spinner-pulse",id)
     output_divs <- shiny::div(id=id,class="sk-spinner sk-spinner-pulse")
   }
   
   if (type=="chasing-dots") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-              ".sk-chasing-dots > .sk-child {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-chasing-dots > .sk-child",id)
     output_divs <- shiny::div(
       id=id,
       class="sk-chasing-dots",
@@ -133,19 +63,7 @@ create_spinner <- function(type=.spinner_types[1],color="#333333") {
   }
   
   if (type=="three-bounce") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-              ".sk-three-bounce > .sk-child {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-three-bounce > .sk-child",id)
     output_divs <- shiny::div(
       id=id,
       class="sk-three-bounce",
@@ -154,19 +72,7 @@ create_spinner <- function(type=.spinner_types[1],color="#333333") {
   }
   
   if (type=="circle") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-              ".sk-circle .sk-child:before {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-circle .sk-child:before",id)
     output_divs <- shiny::div(
       id=id,
       class="sk-circle",
@@ -175,19 +81,7 @@ create_spinner <- function(type=.spinner_types[1],color="#333333") {
   }
   
   if (type=="cube-grid") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-              ".sk-cube-grid > .sk-cube {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-cube-grid > .sk-cube",id)
     output_divs <- shiny::div(
       id=id,
       class="sk-cube-grid",
@@ -196,19 +90,7 @@ create_spinner <- function(type=.spinner_types[1],color="#333333") {
   }
   
   if (type=="fading-circle") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-              ".sk-fading-circle > .sk-circle:before {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-fading-circle > .sk-circle:before",id)
     output_divs <- shiny::div(
       id=id,
       class="sk-fading-circle",
@@ -217,19 +99,7 @@ create_spinner <- function(type=.spinner_types[1],color="#333333") {
   }
   
   if (type=="folding-cube") {
-    colour_css <- shiny::singleton(
-      shiny::tags$head(
-        shiny::tags$style(
-          shiny::HTML(
-            sprintf(
-              ".sk-folding-cube > .sk-cube:before {
-              background-color: %s;
-            }",color)
-          )
-        )
-      )
-    )
-    
+    color_selector <- sprintf("#%s.sk-folding-cube > .sk-cube:before",id)
     output_divs <- shiny::div(
       id=id,
       class="sk-folding-cube",
@@ -240,5 +110,19 @@ create_spinner <- function(type=.spinner_types[1],color="#333333") {
   if (is.null(output_divs)) {
     stop("Invalid spinner-type supplied.")
   }
-  shiny::tagList(colour_css,output_divs)
+  
+  if (!is.null(color)) {
+    color_css <- shiny::tags$head(
+      shiny::tags$style(
+        shiny::HTML(
+          sprintf(
+            "%s {
+              background-color: %s;
+            }",color_selector,color)
+        )
+      )
+    )
+  } 
+  
+  shiny::tagList(color_css,output_divs)
 }

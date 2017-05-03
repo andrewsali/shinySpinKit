@@ -4,7 +4,7 @@
 \alias{create_spinner}
 \title{Return a list enumerating spinner types and associated css classes}
 \usage{
-create_spinner(type = .spinner_types[1], color = "#333333")
+create_spinner(type = .spinner_types[1], color = getOption("spinner.color"))
 }
 \arguments{
 \item{type}{The type of spinner to add. You can see the available types of spinners in the package variables .spinner_types}

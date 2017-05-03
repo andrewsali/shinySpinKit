@@ -4,14 +4,15 @@
 \alias{withSpinner}
 \title{Add a spinner that shows when an output is recalculating}
 \usage{
-withSpinner(ui_element, type = "rotating-plane", color = "#333333")
+withSpinner(ui_element, type = "rotating-plane",
+  color = getOption("spinner.color"))
 }
 \arguments{
 \item{ui_element}{A UI element that should be wrapped with a spinner when the corresponding output is being calculated.}
 
-\item{class}{Define the type of spinner to show. Defaults to 'sk-rotating-plane'. For further types, see the list returned by \code{\link{spinner_types}}.}
+\item{color}{The color of the spinner to be applied in HTML}
 
-\item{...}{Further parameters for the div generating the spinner.}
+\item{class}{Define the type of spinner to show. Defaults to 'sk-rotating-plane'. For further types, see the list returned by \code{\link{spinner_types}}.}
 }
 \description{
 Add a spinner that shows when an output is recalculating

@@ -2,8 +2,8 @@
 #' @export
 #' @param ui_element A UI element that should be wrapped with a spinner when the corresponding output is being calculated.
 #' @param class Define the type of spinner to show. Defaults to 'sk-rotating-plane'. For further types, see the list returned by \code{\link{spinner_types}}.
-#' @param ... Further parameters for the div generating the spinner.
-withSpinner <- function(ui_element,type="rotating-plane",color="#333333") {
+#' @param color The color of the spinner to be applied in HTML
+withSpinner <- function(ui_element,type="rotating-plane",color=getOption("spinner.color")) {
   shiny::tagList(
     shiny::singleton(
       shiny::tags$head(shiny::tags$link(rel="stylesheet",href="assets/spinner.css"))
