@@ -28,7 +28,7 @@ devtools::install_github('andrewsali/shinySpinKit')
 To see how this works in action, you can run the example application from github directly:
 
 ```
-shiny::runGitHub('andrewsali/shinySpinKit)'
+shiny::runGitHub('andrewsali/shinySpinKit')
 ```
 ## Changing the spinner colour
 
