@@ -16,7 +16,7 @@ withSpinner <- function(ui_element,type="rotating-plane",color=getOption("spinne
     ),
     shiny::div(class="shiny-spinner-output-container",
         shiny::div(class="shiny-spinner-spinner-container",
-                create_spinner(type,color=color)
+                createSpinner(type,color=color)
         ),
         ui_element
     )

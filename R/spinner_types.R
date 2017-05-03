@@ -6,7 +6,7 @@
 #' @param type The type of spinner to add. You can see the available types of spinners in the package variables .spinner_types
 #' @param color The color of the spinner to be applied in HTML
 #' @export
-create_spinner <- function(type=.spinner_types[1],color=getOption("spinner.color")) {
+createSpinner <- function(type=.spinner_types[1],color=getOption("spinner.color")) {
   # depending on the spinner types, one needs to generate different inner divs
   output_divs <- NULL
   
