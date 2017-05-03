@@ -19,7 +19,7 @@ ui <- fluidPage(
                column(width=6,
                       wellPanel(
                         tags$b("With spinner:"),
-                        withSpinner(plotOutput(paste0("plot",which(.type==.spinner_types))),type=.type)
+                        withSpinner(plotOutput(paste0("plot",which(.type==.spinner_types))),type=.type,color=sprintf("rgb(%s)",paste0(sample(0:255,3,replace=TRUE),collapse=",")))
                       )
                ),
                column(width=6,
