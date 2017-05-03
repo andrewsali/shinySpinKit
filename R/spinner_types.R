@@ -1,6 +1,6 @@
 #' Possible spinner types
 #' @export
-.spinner_types <- c("rotating-plane","double-bounce","wave","wandering-cubes","pulse","chasing-dots","three-bounce","circle","cube-grid","fading-circle","folding-cube")
+.spinner_types <- c("rotating-plane","double-bounce","wave","wandering-cubes","pulse","chasing-dots","three-bounce","circle","cube-grid","folding-cube")
 
 #' Return a list enumerating spinner types and associated css classes
 #' @param type The type of spinner to add. You can see the available types of spinners in the package variables .spinner_types
