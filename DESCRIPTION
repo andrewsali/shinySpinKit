@@ -1,9 +1,13 @@
 Package: shinySpinKit
 Type: Package
-Title: What the package does (short line)
-Version: 1.0
+Title: Add SpinKit Loading Animations To Shiny Outputs
+Version: 0.1.0
 Date: 2017-05-03
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Andras Sali <andras.sali@alphacruncher.hu>
+Maintainer: Andras Sali <andras.sali@alphacruncher.hu>
+Description: Create a lightweight wrapper for the SpinKit library to show
+    spinners when Shiny outputs are recalculating.
+License: GPL 3.0
+Depends:
+    shiny
+RoxygenNote: 5.0.1

@@ -3,8 +3,9 @@
 }
 
 .shiny-spinner-spinner-container {
-  /* ensure spinner container z-index is maximal so that it always overlaps the plot*/
-  z-index: 2147483647;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
