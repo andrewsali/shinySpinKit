@@ -1,6 +1,6 @@
 # shinySpinKit
 
-A lightweight wrapper to use [SpinKit](http://tobiasahlin.com/spinkit/) loading animations from Shiny in an automated fashion. Loading animations leverage on [Shiny JS events](https://shiny.rstudio.com/articles/js-events.html) and will show whilst the output value is 'out-of-date' (i.e. has been invalidated and the client hasn't received the new value).
+A lightweight wrapper to use [SpinKit](http://tobiasahlin.com/spinkit/) loading animations from Shiny Outputs (e.g. plots, tables) in an automated fashion. Loading animations leverage on [Shiny JS events](https://shiny.rstudio.com/articles/js-events.html) and will show whilst the output value is 'out-of-date' (i.e. has been invalidated and the client hasn't received the new value).
 
 You can use it for any type of shiny output, by wrapping the UI element with the `withSpinner` tag:
 
